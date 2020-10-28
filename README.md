@@ -36,9 +36,19 @@ void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) co
 
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
 	 hacerlo. Se valorará la utilización de la librería matplotlib de Python.
+	 
+<img src="img/P3_5.jpg" width="640" align="center">
+
+<img src="img/P3_1.jpg" width="640" align="center">
+
 ```c
 Periodo Pitch -> Podemos ver que son aproximadamente 9 ms.
   ```
+<img src="img/P3_3.jpg" width="640" align="center">
+<img src="img/P3_4.jpg" width="640" align="center">
+
+
+
   
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
