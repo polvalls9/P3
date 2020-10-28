@@ -19,7 +19,7 @@ Ejercicios básicos
 void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
 
     for (unsigned int l = 0; l < r.size(); ++l) {
-      for (unsigned int k = 0; k < x.size() - l; ++k) {
+      for (unsigned int k = 0; k < x.size() -1 - l; ++k) {
   		/// \TODO Compute the autocorrelation r[l]
       r[l] += x[k] * x[k+l];
     }
