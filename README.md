@@ -36,7 +36,25 @@ void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) co
 
 	 NOTA: es más que probable que tenga que usar Python, Octave/MATLAB u otro programa semejante para
 	 hacerlo. Se valorará la utilización de la librería matplotlib de Python.
-	 
+	
+ El código MATLAB usado es el siguiente:
+  
+  ```c
+[y,Fs] = audioread('a30ms.wav');
+deltat=1/Fs;
+t=0:deltat:(length(y)*deltat)-deltat;
+subplot(2,1,1);
+plot(t,y); title('Signal Vocal A 30 ms'); xlabel( 'Seconds'); ylabel('Amplitude');
+subplot(2,1,2);
+c = xcorr(y);
+plot(c); title('Autocorrelation'); ylabel('Amplitude');
+  ```
+Donde las variables toman los siguientes valores:
+  
+<img src="img/P3_4.jpg" width="400" align="center">
+
+Las gráficas conseguidas son las siguientes: 
+
 <img src="img/P3_5.jpg" width="400" align="center">
 
 <img src="img/P3_1.jpg" width="400" align="center">
@@ -50,10 +68,6 @@ Periodo Pitch -> Podemos ver que son aproximadamente 9 ms, por lo que su pitch e
 Después de ver la gráfica de la autocorrelación vemos que el pitch es de 110,34 Hz.
 
   ```
-<img src="img/P3_4.jpg" width="400" align="center">
-
-
-
   
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
