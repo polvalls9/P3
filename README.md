@@ -19,7 +19,7 @@ Ejercicios básicos
 void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
 
     for (unsigned int l = 0; l < r.size(); ++l) {
-      for (unsigned int k = 0; k < x.size() -1 - l; ++k) {
+      for (unsigned int k = 0; k < x.size() - l -1 ; ++k) {
   		/// \TODO Compute the autocorrelation r[l]
       r[l] += x[k] * x[k+l];
     }
@@ -42,9 +42,14 @@ void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) co
 <img src="img/P3_1.jpg" width="400" align="center">
 
 ```c
-Periodo Pitch -> Podemos ver que son aproximadamente 9 ms.
+Periodo Pitch -> Podemos ver que son aproximadamente 9 ms, por lo que su pitch es de aproximadamente 110,37 Hz.
   ```
 <img src="img/P3_3.jpg" width="400" align="center">
+
+```c
+Después de ver la gráfica de la autocorrelación vemos que el pitch es de 110,34 Hz.
+
+  ```
 <img src="img/P3_4.jpg" width="400" align="center">
 
 
