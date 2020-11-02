@@ -99,6 +99,20 @@ vector<float>::const_iterator iR = r.begin() + npitch_min, iRMax = iR;
    
 
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
+   
+ ```c
+bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
+    /// \TODO Implement a rule to decide whether the sound is voiced or not.
+    /// * You can use the standard features (pot, r1norm, rmaxnorm),
+    ///   or compute and use other ones.
+
+    if(( rmaxnorm > 0.5F || r1norm > 0.92F) && pot > -48.0F )
+      return false;
+    else
+      return true;
+    
+  }
+  ```
 
 - Una vez completados los puntos anteriores, dispondrá de una primera versión del detector de pitch. El 
   resto del trabajo consiste, básicamente, en obtener las mejores prestaciones posibles con él.
