@@ -55,7 +55,7 @@ Donde las variables toman los siguientes valores:
 
 Las gráficas conseguidas son las siguientes: 
 
-<img src="img/P3_5.jpg" width="400" align="center">
+<img src="img/P3_5a.jpg" width="400" align="center">
 
 <img src="img/P3_1.jpg" width="400" align="center">
 
