@@ -64,13 +64,39 @@ Periodo Pitch -> Podemos ver que son aproximadamente 9 ms, por lo que su pitch e
   ```
 <img src="img/P3_3.jpg" width="400" align="center">
 
-```c
+```
 Después de ver la gráfica de la autocorrelación vemos que el pitch es de 110,34 Hz.
 
   ```
   
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
+     
+  ```c
+vector<float>::const_iterator iR = r.begin() + npitch_min, iRMax = iR;
+
+    /// \TODO 
+	/// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
+	/// Choices to set the minimum value of the lag are:
+	///    - The first negative value of the autocorrelation.
+	///    - The lag corresponding to the maximum value of the pitch.
+    ///	   .
+	/// In either case, the lag should not exceed that of the minimum value of the pitch.
+
+  while (iR != r.end())
+  {
+    if(*iR > *iRMax)
+    {
+      iRMax = iR;           //Establecemos el nuevo máximo encontrado                  
+    }
+    iR++;                   //Seguimos iterando para ver si hay otro máximo
+  }
+
+    unsigned int lag = iRMax - r.begin();
+
+    float pot = 10 * log10(r[0]);
+  ```
+   
 
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
 
