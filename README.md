@@ -61,15 +61,11 @@ Las gráficas conseguidas son las siguientes:
 
 <img src="img/P3_1.jpg" width="400" align="center">
 
-```c
-Periodo Pitch -> Podemos ver que son aproximadamente 9 ms, por lo que su pitch es de aproximadamente 110,37 Hz.
-  ```
+`Periodo Pitch -> Podemos ver que son aproximadamente 9 ms, por lo que su pitch es de aproximadamente 110,37 Hz.`
+
 <img src="img/P3_3.jpg" width="400" align="center">
 
-```
-Después de ver la gráfica de la autocorrelación vemos que el pitch es de 110,34 Hz.
-
-  ```
+`Después de ver la gráfica de la autocorrelación vemos que el pitch es de 110,34 Hz.`
   
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
@@ -99,7 +95,6 @@ vector<float>::const_iterator iR = r.begin() + npitch_min, iRMax = iR;
     float pot = 10 * log10(r[0]);
   ```
    
-
    * Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
    
  ```c
@@ -131,19 +126,44 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
 
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
+		
+<img src="img/P3_7.jpg" width="560" align="center">
 
-      - Use el detector de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
+`Audio con el sonido 'a'; Pitch calculado; Potencia; r1norm = r[1] / r[0]; rmaxnorm = r[lag] / r[0](Orden de abajo a arriba)`
+
+  - Use el detector de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
 		ilustrativa del resultado de ambos detectores.
+		
+  <img src="img/P3_6.jpg" width="560" align="center">
   
   * Optimice los parámetros de su sistema de detección de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
+	
+```c
+bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
+    /// \TODO Implement a rule to decide whether the sound is voiced or not.
+    /// * You can use the standard features (pot, r1norm, rmaxnorm),
+    ///   or compute and use other ones.
 
+    if(( rmaxnorm > 0.5F || r1norm > 0.92F) && pot > -48.0F )
+      return false;
+    else
+      return true;
+    
+  }
+  ```
+  <img src="img/P3_9.jpg" width="560" align="center">
+
+  
    * Inserte una gráfica en la que se vea con claridad el resultado de su detector de pitch junto al del
      detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará
 	 el uso de alternativas de mayor calidad (particularmente Python).
    
+  `Audio con el la palabra hola.`
+  
+  <img src="img/P3_8.jpg" width="560" align="center">
 
 Ejercicios de ampliación
 ------------------------
