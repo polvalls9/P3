@@ -4,16 +4,23 @@
 #include <math.h>
 #include "pitch_analyzer.h"
 
+#define _USE_MATH_DEFINES
+
 using namespace std;
 
 /// Name space of UPC
 namespace upc {
   void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
-
     for (unsigned int l = 0; l < r.size(); ++l) {
-  		/// \TODO Compute the autocorrelation r[l]
-    }
 
+      r[l] = 0;
+
+      for (unsigned int k = 0; k < x.size() - l -1; ++k) {
+  		/// \TODO Compute the autocorrelation r[l]
+      r[l] = x[k] * x[k+l] + r[l];
+    }
+     r[l] = r[l] / x.size();
+    }
     if (r[0] == 0.0F) //to avoid log() and divide zero 
       r[0] = 1e-10; 
   }
@@ -27,6 +34,10 @@ namespace upc {
     switch (win_type) {
     case HAMMING:
       /// \TODO Implement the Hamming window
+      for (unsigned int i = 0; i < frameLen; ++i)
+      {
+        window[i] = 0.54F - 0.46F * cos((2*M_PI*i)/(frameLen-1));         //Ventana de Hamming a0=0.54 | a1=0.46
+      }
       break;
     case RECT:
     default:
@@ -50,7 +61,12 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    return true;
+
+    if(( rmaxnorm > 0.5F || r1norm > 0.92F) && pot > -48.0F )
+      return false;
+    else
+      return true;
+    
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> & x) const {
@@ -66,8 +82,9 @@ namespace upc {
     //Compute correlation
     autocorrelation(x, r);
 
-    vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+    vector<float>::const_iterator iR = r.begin() + npitch_min, iRMax = iR;
 
+  //cout << npitch_min << " " << *iR << " " << *iRMax << endl;
     /// \TODO 
 	/// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
 	/// Choices to set the minimum value of the lag are:
@@ -76,16 +93,27 @@ namespace upc {
     ///	   .
 	/// In either case, the lag should not exceed that of the minimum value of the pitch.
 
+  while (iR != r.end())
+  {
+    if(*iR > *iRMax)
+    {
+      iRMax = iR;           //Establecemos el nuevo máximo encontrado                  
+    }
+    iR++;                   //Seguimos iterando para ver si hay otro máximo
+  }
+
     unsigned int lag = iRMax - r.begin();
 
+//cout << lag << endl;
     float pot = 10 * log10(r[0]);
 
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
     //change to #if 1 and compile
-#if 0
+#if 1
     if (r[0] > 0.0F)
-      cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
+      //cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
+      cout << r[lag]/r[0] << endl;
 #endif
     
     if (unvoiced(pot, r[1]/r[0], r[lag]/r[0]))
