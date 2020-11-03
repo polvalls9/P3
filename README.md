@@ -16,14 +16,16 @@ Ejercicios básicos
    * Complete el cálculo de la autocorrelación e inserte a continuación el código correspondiente.
    
 ```c
-void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
-
+ void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const {
     for (unsigned int l = 0; l < r.size(); ++l) {
-      for (unsigned int k = 0; k < x.size() - l -1 ; ++k) {
+
+      r[l] = 0;
+
+      for (unsigned int k = 0; k < x.size() - l -1; ++k) {
   		/// \TODO Compute the autocorrelation r[l]
-      r[l] += x[k] * x[k+l];
+      r[l] = x[k] * x[k+l] + r[l];
     }
-  r[l] = r[l] / x.size();
+     r[l] = r[l] / x.size();
     }
     if (r[0] == 0.0F) //to avoid log() and divide zero 
       r[0] = 1e-10; 
