@@ -222,6 +222,10 @@ Ejercicios de ampliación
      
     }
     ```
+    <img src="img/P3_10.jpg" width="560" align="center">
+    
+    Gracias a éste método y cambiando algunos parámetros de la función `unvoiced` hemos conseguido mejorar un poco más nuestro detector de pitch subiendo el porcentaje de acierto al `90,80%.`
+   
   * Técnicas de postprocesado: filtro de mediana, *dynamic time warping*, etc.
   * Métodos alternativos a la autocorrelación: procesado cepstral, *average magnitude difference function*
     (AMDF), etc.
