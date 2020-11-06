@@ -213,15 +213,12 @@ Ejercicios de ampliación
   En la función `compute_pitch` hemos añadido unas líneas de código que permiten usar el Center Clipping.
   ```c
   float PitchAnalyzer::compute_pitch(vector<float> & x) const {
-    if (x.size() != frameLen)
-      return -1.0F;
     //Center Clipping
     for (unsigned int i = 0; i < x.size(); ++i) {
 
      if( x[i] < LLINDARCENTERCLIPPING) x[i]=0;
-     .
-     .
-     .
+     
+     ...
      
     }
     ```
