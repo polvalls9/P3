@@ -216,7 +216,7 @@ Ejercicios de ampliación
     //Center Clipping
     for (unsigned int i = 0; i < x.size(); ++i) {
 
-     if( x[i] < LLINDARCENTERCLIPPING) x[i]=0;
+      if( x[i] < LLINDARCENTERCLIPPING && x[i] > -LLINDARCENTERCLIPPING) x[i]=0;
      
      ...
      
