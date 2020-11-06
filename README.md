@@ -174,11 +174,11 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
      detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará
 	 el uso de alternativas de mayor calidad (particularmente Python).
    
-  `Audio con el la palabra hola.`
+  `Audio con la palabra hola.`
   
   <img src="img/P3_8.jpg" width="560" align="center">
   
-  
+  `Podemos ver como hay pequeños puntos donde el pitch hace cosas raras, esto se podría solucionar con el postprocesado o el preprocesado.`
 
 Ejercicios de ampliación
 ------------------------
