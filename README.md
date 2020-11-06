@@ -15,7 +15,7 @@ Ejercicios básicos
 
    * Complete el cálculo de la autocorrelación e inserte a continuación el código correspondiente.
  
- El cálculo de la autocorrelación se define como la correlación cruzada de la señal consigo misma con un pequeño desplazamiento. Por lo que hemos ido recorriendo la señal por encima de ella misma, usando la función for. En cada muestra de la señal, hemos ido realizando los productos, para hacer la convolución. Y finalmente, hemos dividido el resultado entre el número de muestras de la señal.
+`El cálculo de la autocorrelación se define como la correlación cruzada de la señal consigo misma con un pequeño desplazamiento. Por lo que hemos ido recorriendo la señal por encima de ella misma, usando la función for. En cada muestra de la señal, hemos ido realizando los productos, para hacer la convolución. Y finalmente, hemos dividido el resultado entre el número de muestras de la señal.`
  
  
 ```c
@@ -66,12 +66,12 @@ Las gráficas conseguidas son las siguientes:
 
 
 
-En las gráficas podemos ver que el periodo de pitch es aproximadamente 9ms, por lo que como el pitch=1/T, aproximadamente la función tendrá un pitch de 110,37 Hz.
+`En las gráficas podemos ver que el periodo de pitch es aproximadamente 9ms, por lo que como el pitch=1/T, aproximadamente la función tendrá un pitch de 110,37 Hz.`
 
 <img src="img/P3_3.jpg" width="400" align="center">
 
 
-Después de ver la gráfica de la autocorrelación vemos que el valor de pitch que habíamos calculado es aproximadamente parecido al que se ve en esta gráfica que es de 110,34 Hz.
+`Después de ver la gráfica de la autocorrelación vemos que el valor de pitch que habíamos calculado es aproximadamente parecido al que se ve en esta gráfica que es de 110,34 Hz.`
   
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
      autocorrelación. Inserte a continuación el código correspondiente.
@@ -120,7 +120,7 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
   ```
 
 
-Para saber si un sonido es sordo o sonoro, nos basamos en la potencia de la señal. Si el sonido es sonoro tendrá mayor potencia que si es sordo. Asimismo, miramos si la función de autocorrelación tiene dos máximos superiores a cierto valor. Ya que si es sonoro tendrá pitch. 
+`Para saber si un sonido es sordo o sonoro, nos basamos en la potencia de la señal. Si el sonido es sonoro tendrá mayor potencia que si es sordo. Asimismo, miramos si la función de autocorrelación tiene dos máximos superiores a cierto valor. Ya que si es sonoro tendrá pitch.`
 
 
 - Una vez completados los puntos anteriores, dispondrá de una primera versión del detector de pitch. El 
@@ -141,7 +141,7 @@ Para saber si un sonido es sordo o sonoro, nos basamos en la potencia de la señ
 		
 <img src="img/P3_7.jpg" width="560" align="center">
 
-`Audio con el sonido 'a'; Pitch calculado; Potencia; r1norm = r[1] / r[0]; rmaxnorm = r[lag] / r[0](Orden de abajo a arriba)`
+`Audio con el sonido 'a'; Las gráficas son: Pitch calculado; Potencia; r1norm = r[1] / r[0]; rmaxnorm = r[lag] / r[0] (Orden de abajo a arriba)`
 
   - Use el detector de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
 	    su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica
@@ -168,7 +168,7 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
   ```
   <img src="img/P3_9.jpg" width="560" align="center">
 
-Tal como podemos ver en la imagen, los resultados obtenidos son bastante favorables, ya que son superiores al 90%. 
+`Tal como podemos ver en la imagen, los resultados obtenidos son bastante favorables, ya que son superiores al 90%.`
   
    * Inserte una gráfica en la que se vea con claridad el resultado de su detector de pitch junto al del
      detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará
