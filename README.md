@@ -156,6 +156,7 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
   ```
   <img src="img/P3_9.jpg" width="560" align="center">
 
+  `El resultado máximo obtenido ajustando los parámetros ha sido del 90,67%. //Explicar més bé això`
   
    * Inserte una gráfica en la que se vea con claridad el resultado de su detector de pitch junto al del
      detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará
