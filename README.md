@@ -178,6 +178,10 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
   
   <img src="img/P3_8.jpg" width="560" align="center">
   
+  Conclusiones
+  ---------
+  
+  
   `Podemos ver como hay pequeños puntos donde el pitch hace cosas raras, esto se podría solucionar con el postprocesado o el preprocesado.`
 
 Ejercicios de ampliación
