@@ -203,6 +203,28 @@ Ejercicios de ampliación
   Entre las posibles mejoras, puede escoger una o más de las siguientes:
 
   * Técnicas de preprocesado: filtrado paso bajo, *center clipping*, etc.
+  
+  `Hemos implementado el método Center Clipping en nuestro cálculo de pitch, con eso hemos conseguido mejorar un poco más nuestro detector de pitch.`
+  
+  En el archivo `pitch_analyzer.h` hemos definido la siguiente constante:
+  
+  `const float LLINDARCENTERCLIPPING = 0.01F; //Llindar Center Clipping`
+  
+  En la función `compute_pitch` hemos añadido unas líneas de código que permiten usar el Center Clipping.
+  ```c
+  float PitchAnalyzer::compute_pitch(vector<float> & x) const {
+    if (x.size() != frameLen)
+      return -1.0F;
+    //Center Clipping
+    for (unsigned int i = 0; i < x.size(); ++i) {
+
+     if( x[i] < LLINDARCENTERCLIPPING) x[i]=0;
+     .
+     .
+     .
+     
+    }
+    ```
   * Técnicas de postprocesado: filtro de mediana, *dynamic time warping*, etc.
   * Métodos alternativos a la autocorrelación: procesado cepstral, *average magnitude difference function*
     (AMDF), etc.
