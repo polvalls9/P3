@@ -206,27 +206,39 @@ Ejercicios de ampliación
   
   `Hemos implementado el método Center Clipping en nuestro cálculo de pitch, con eso hemos conseguido mejorar un poco más nuestro detector de pitch.`
   
-  En el archivo `pitch_analyzer.h` hemos definido la siguiente constante:
+  Estableciendo el umbral del Center Clipping:
   
-  `const float LLINDARCENTERCLIPPING = 0.01F; //Llindar Center Clipping`
+  `#define LLINDARCENTERCLIPPING 0.004 //Llindar Center Clipping`
   
-  En la función `compute_pitch` hemos añadido unas líneas de código que permiten usar el Center Clipping.
+  Hemos añadido unas líneas de código que permiten usar el Center Clipping.
+  
   ```c
-  float PitchAnalyzer::compute_pitch(vector<float> & x) const {
     //Center Clipping
     for (unsigned int i = 0; i < x.size(); ++i) {
 
       if( x[i] < LLINDARCENTERCLIPPING && x[i] > -LLINDARCENTERCLIPPING) x[i]=0;
-     
-     ...
-     
-    }
     ```
     <img src="img/P3_10.jpg" width="560" align="center">
     
-    Gracias a éste método y cambiando algunos parámetros de la función `unvoiced` hemos conseguido mejorar un poco más nuestro detector de pitch subiendo el porcentaje de acierto al `90,48%.`
+    Gracias a éste método hemos conseguido mejorar un poco más nuestro detector de pitch subiendo el porcentaje de acierto al `90,74%.`
    
   * Técnicas de postprocesado: filtro de mediana, *dynamic time warping*, etc.
+  
+  Hemos implementado el Filtro de Mediana, con el código siguiente:
+  
+  ```c
+  // Median Filter
+  for (unsigned int i = 1; i < f0.size(); ++i)
+  {
+    vector<float> vec {f0[i-1],f0[i],f0[i+1]};
+    sort(vec.begin(), vec.end());
+    f0[i] = vec[1];
+  }
+    ```
+  Con este filtro de mediana postprocesamos la señal y así evitamos los errores puntuales que hacía en la gráfica anterior, ahora conseguimos suavizar el pitch. Con el mismo audio, la palabra `hola`, tenemos este resultado:
+  
+  <img src="img/P3_11.jpg" width="560" align="center">
+  
   * Métodos alternativos a la autocorrelación: procesado cepstral, *average magnitude difference function*
     (AMDF), etc.
   * Optimización **demostrable** de los parámetros que gobiernan el detector, en concreto, de los que
