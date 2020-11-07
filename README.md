@@ -181,7 +181,6 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
   Conclusiones
   ---------
   
-  
   `Podemos ver como hay pequeños puntos donde el pitch hace cosas raras, esto se podría solucionar con el postprocesado o el preprocesado.`
 
 Ejercicios de ampliación
@@ -238,6 +237,13 @@ Ejercicios de ampliación
   Con este filtro de mediana postprocesamos la señal y así evitamos los errores puntuales que hacía en la gráfica anterior, ahora conseguimos suavizar el pitch. Con el mismo audio, la palabra `hola`, tenemos este resultado:
   
   <img src="img/P3_11.jpg" width="560" align="center">
+  
+  
+  `Hemos provado de analizar ahora la efectividad con el center clipping y el filtro de mediana y hemos conseguido un acierto del 90,74%, hemos mejorado el anterior resultado de 90,67%.`
+  
+  
+  <img src="img/P3_10.jpg" width="560" align="center">
+  
   
   * Métodos alternativos a la autocorrelación: procesado cepstral, *average magnitude difference function*
     (AMDF), etc.
