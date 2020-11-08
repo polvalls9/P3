@@ -181,7 +181,9 @@ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const {
   Conclusiones
   ---------
   
-  `Podemos ver como hay pequeños puntos donde el pitch hace cosas raras, esto se podría solucionar con el postprocesado o el preprocesado.`
+  `Con esta práctica podemos ver cómo hay pequeños puntos donde el pitch toma valores raros. Para solucionar esto tendríamos que añadir un método de preprocesado de señal y uno de postprocesado. 
+El método más usado de preprocesado de señal es el center-clipping. Se aplica para recortar los picos de la señal y así evitar errores en la detección, ya que la función de autocorrelación también tiene información sobre el tracto vocal. Recorta la estructura de los formantes en función de un parámetro. 
+El método mas usado de postprocesado de señal es añadir un filtro de mediana. Se aplica para evitar extraños saltos en el pitch y evitar falsas detecciones. El filtro de mediana asigna a cada punto el valor de la mediana local. De tal forma que solo cambian aquellos valores que no corresponden a la mediana de la muestra. Es mejor aplicar este filtro que aplicar un filtro paso bajo. Vamos a implementarlos en la parte de ampliación de ésta práctica.`
 
 Ejercicios de ampliación
 ------------------------
