@@ -246,6 +246,20 @@ Ejercicios de ampliación
   
   <img src="img/P3_10.jpg" width="560" align="center">
   
+  Hemos probado de subir la longitud del filtro de mediana, en este caso a 5:
+  
+    ```c
+  // Median Filter
+  for (unsigned int i = 2; i < f0.size(); ++i)
+  {
+    vector<float> vec {f0[i-2],f0[i-1],f0[i],f0[i+1], f0[i+2]};
+    sort(vec.begin(), vec.end());
+    f0[i] = vec[2];
+  }
+    ```
+ <img src="img/P3_12.jpg" width="560" align="center">
+ 
+    `Pero los resultados no mejoran respecto al de longitud 3, por lo tanto nos quedamos con el filtro de mediana de longitud 3.`
   
   * Métodos alternativos a la autocorrelación: procesado cepstral, *average magnitude difference function*
     (AMDF), etc.
