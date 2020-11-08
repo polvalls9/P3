@@ -259,7 +259,9 @@ Ejercicios de ampliación
     ```
  <img src="img/P3_12.jpg" width="560" align="center">
  
-Los resultados no mejoran respecto al de longitud 3, ya que ahora la probabilidad de acierto es del `90,28`, por lo tanto nos quedamos con el filtro de mediana de longitud 3, nos daba una mejor eficacia de acierto.
+Los resultados no mejoran respecto al de longitud 3, ya que ahora la probabilidad de acierto es del `90,28%`, por lo tanto nos quedamos con el filtro de mediana de longitud 3, nos daba una mejor eficacia de acierto.
+
+
   
   * Métodos alternativos a la autocorrelación: procesado cepstral, *average magnitude difference function*
     (AMDF), etc.
