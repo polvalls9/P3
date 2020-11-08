@@ -12,6 +12,7 @@
 
 #define FRAME_LEN   0.030 /* 30 ms. */
 #define FRAME_SHIFT 0.015 /* 15 ms. */
+#define LLINDARCENTERCLIPPING 0.004 //Llindar Center Clipping
 
 using namespace std;
 using namespace upc;
@@ -64,7 +65,11 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
   /// central-clipping or low pass filtering may be used.
-  
+   //Center Clipping
+    for (unsigned int i = 0; i < x.size(); ++i) {
+
+     if( x[i] < LLINDARCENTERCLIPPING && x[i] > -LLINDARCENTERCLIPPING) x[i]=0;
+    }
   // Iterate for each frame and save values in f0 vector
   vector<float>::iterator iX;
   vector<float> f0;
@@ -77,6 +82,14 @@ int main(int argc, const char *argv[]) {
   /// Postprocess the estimation in order to supress errors. For instance, a median filter
   /// or time-warping may be used.
 
+  // Median Filter
+  for (unsigned int i = 1; i < f0.size(); ++i)
+  {
+    vector<float> vec {f0[i-1],f0[i],f0[i+1]};
+    sort(vec.begin(), vec.end());
+    f0[i] = vec[1];
+  }
+  
   // Write f0 contour into the output file
   ofstream os(output_txt);
   if (!os.good()) {

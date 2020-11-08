@@ -24,7 +24,6 @@ namespace upc {
     if (r[0] == 0.0F) //to avoid log() and divide zero 
       r[0] = 1e-10; 
   }
-
   void PitchAnalyzer::set_window(Window win_type) {
     if (frameLen == 0)
       return;
@@ -81,7 +80,7 @@ namespace upc {
 
     //Compute correlation
     autocorrelation(x, r);
-
+  
     vector<float>::const_iterator iR = r.begin() + npitch_min, iRMax = iR;
 
   //cout << npitch_min << " " << *iR << " " << *iRMax << endl;
